@@ -21,5 +21,7 @@ public:
 		return _name;
 	}
 	string statement();
+	double getTotalCharge();
+	int amountBonus();
 };
 

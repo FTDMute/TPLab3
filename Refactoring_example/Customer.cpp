@@ -1,27 +1,36 @@
 #include "Customer.h"
 
 string Customer::statement() {
-	double totalAmount = 0;
-	int frequentRenterPoints = 0;
+	
 	string result = "Прокат " + getName() + "\n";
 
 	for (auto& each : _rentals) {
-		double thisAmount = each.getCharge();
-		
-
-		// Начисление бонусных очков
-		frequentRenterPoints += each.amountBonus();
-
 		// Вывод результатов для каждого проката
 		result += "\t" + each.getMovie().getTitle() + "\t" +
-			to_string(thisAmount) + "\n";
-		totalAmount += thisAmount;
+			to_string(each.getCharge()) + "\n";	
 	}
 
 	// Добавление колонтитула
 	result += "Сумма задолженности: " +
-		to_string(totalAmount) + "\n";
-	result += "Вы заработали " + to_string(frequentRenterPoints) +
+		to_string(getTotalCharge()) + "\n";
+	result += "Вы заработали " + to_string(amountBonus()) +
 		" бонусных очков";
 	return result;
+}
+
+double Customer::getTotalCharge() {
+	double totalAmount = 0;
+	for (auto& each : _rentals) {
+		double thisAmount = each.getCharge();
+		totalAmount += thisAmount;
+	}
+	return totalAmount;
+}
+
+int Customer::amountBonus() {
+	int frequentRenterPoints = 0;
+    for (auto& each : _rentals) {
+	   frequentRenterPoints += each.amountBonus();
+    }
+	return frequentRenterPoints;
 }
