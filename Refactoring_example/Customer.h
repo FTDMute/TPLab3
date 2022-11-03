@@ -22,6 +22,5 @@ public:
 	}
 	string statement();
 	int amountBonus(Rental& each);
-	double amountFor(Rental each);
 };
 
