@@ -5,11 +5,5 @@ double Rental::getCharge()
 }
 int Rental::amountBonus()
 {
-	int frequentRenterPoints = 1;
-
-	// Бонус за двухдневный прокат новинки
-	if ((this->getMovie().getPriceCode() == Movie::NEW_RELEASE) &&
-		this->getDaysRented() > 1)
-		frequentRenterPoints++;
-	return frequentRenterPoints;
+	return _movie.amountBonus(_daysRented);
 }

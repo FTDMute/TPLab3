@@ -12,3 +12,11 @@ double NewReleasePrice::getCharge(int daysRented)
 	result += daysRented * 3;
 	return result;
 }
+
+int NewReleasePrice::amountBonus(int daysRented) {
+	int frequentRenterPoints = 1;
+
+	// Бонус за двухдневный прокат новинки
+	if (daysRented > 1) frequentRenterPoints++;
+	return frequentRenterPoints;
+}
