@@ -51,6 +51,10 @@ public:
 		}
 	}
 
+	double getCharge(int daysRented) {
+		return _price->getCharge(daysRented);
+	}
+
 	string getTitle() {
 		return _title;
 	}
