@@ -6,5 +6,6 @@ class RegularPrice :
 public:
     // Inherited via Price
     virtual int GetPriceCode() override;
+    double getCharge(int daysRented);
 };
 
